@@ -1,0 +1,23 @@
+{% extends "homepage.html" %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<div class="container py-5">
+  <h1>New Ticket</h1>
+  <form method="POST">
+    {% csrf_token %}
+    {{ ticket_form|crispy }}
+    {% if ticket_id%}
+    <a href="/update/{{ ticket_id }} %}" >update</a>
+    <button class="btn btn-primary" type="submit">Update</button>
+    {% endif %}
+    <button class="btn btn-primary" type="submit">
+      <a href="/newticket"></a>Create Ticket
+    </button>
+  </form>
+
+</div>
+
+{% endblock %}
